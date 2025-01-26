@@ -1,0 +1,21 @@
+# composer
+composer.phar
+composer.lock
+/vendor/
+
+# phpunit
+/test-reports
+.phpunit.result.cache
+
+# IDE/OS/Docs
+/.idea
+/.vscode
+.phpstorm*
+_ide_helper.php
+.DS_Store
+
+# Misc
+.env
+
+# php-cs-fixer
+.php-cs-fixer.cache

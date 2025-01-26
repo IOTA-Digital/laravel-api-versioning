@@ -1,0 +1,58 @@
+{
+  "name": "iotadigital/laravel-api-versioning",
+  "description": "This is a Laravel package that enables API versioning",
+  "type": "library",
+  "keywords": [
+    "php",
+    "laravel",
+    "api",
+    "version",
+    "versioning"
+  ],
+  "authors": [
+    {
+      "name": "Ivan Li",
+      "email": "ivan.li@hotmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.2"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.18",
+    "friendsofphp/php-cs-fixer": "^3.68",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^10.5",
+    "rregeer/phpunit-coverage-check": "^0.3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "IotaDigital\\LaravelApiVersioning\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "IotaDigital\\LaravelApiVersioning\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "IotaDigital\\LaravelApiVersioning\\LaravelApiVersioningServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php -vvv --dry-run --show-progress=dots --allow-risky=yes",
+    "lint-fix": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --show-progress=dots --allow-risky=yes",
+    "analyse": "./vendor/bin/phpstan analyse --memory-limit=2G",
+    "analyse-ci": "./vendor/bin/phpstan analyse --memory-limit=2G --error-format gitlab > phpstan.json",
+    "generate-baseline": "./vendor/bin/phpstan analyse --memory-limit=2G --generate-baseline",
+    "test-with-coverage": "phpdbg -qrr ./vendor/bin/phpunit -v --log-junit ./test-reports/junit.xml --coverage-clover ./test-reports/clover.xml --coverage-text --coverage-html ./test-reports/",
+    "test-with-coverage-ci": "phpdbg -qrr -dpcov.enabled=1 ./vendor/bin/phpunit --colors=always -d memory_limit=512M --log-junit ./test-reports/junit.xml --coverage-clover ./test-reports/clover.xml --coverage-text --coverage-html ./test-reports/ --colors=never",
+    "check-coverage": "phpdbg -qrr ./vendor/bin/phpunit -d memory_limit=512M --coverage-clover ./test-reports/clover.xml && ./vendor/bin/coverage-check ./test-reports/clover.xml 60",
+    "test": "./vendor/bin/phpunit --colors=always -v --testdox --log-junit ./test-reports/junit.xml"
+  }
+}
