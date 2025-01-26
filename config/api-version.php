@@ -13,7 +13,7 @@ return [
         StandardVersion::minimum->name => env('API_VERSIONS_MINIMUM', 'v1'),
         StandardVersion::latest->name => env('API_VERSIONS_LATEST', 'v1'),
         StandardVersion::stable->name => env('API_VERSIONS_STABLE', 'v1'),
-        StandardVersion::default->name => StandardVersion::stable->name,
+        StandardVersion::default->name => env('API_VERSIONS_STABLE', 'v1'),
         StandardVersion::support->name => ['v1', 'v2'],
     ],
 
